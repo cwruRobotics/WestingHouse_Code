@@ -111,6 +111,9 @@ void loop() {
       Serial.println("--");
       
       break;
+    case 'i':
+      Serial.println("Current: "+ String(analogRead(A0),HEX)+' '+ String(analogRead(A1),HEX)+' '+ String(analogRead(A2),HEX)+' '
+      +String(analogRead(A3),HEX));
   
 
     }
