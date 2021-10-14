@@ -2,6 +2,7 @@
 
 #include <ros.h>
 #include <std_msgs/String.h>
+#include <std_msgs/UInt16.h>
 
 #include <Sabertooth.h>
 #include <SoftwareSerial.h>
@@ -26,6 +27,7 @@ std_msgs::String str_msg;
 ros::Publisher sensorData("sensorData",&str_msg);
 
 ros::Publisher arduinoLog("arduinoLog",&str_msg);
+ros::Publisher currentData("currentData",&str_msg);
 
 
 
@@ -59,18 +61,12 @@ void motor_lf( const std_msgs::UInt16& cmd_msg){
   
 ros::Subscriber<std_msgs::UInt16> subLeftFront("motor_left_front", motor_lf);
 
-
-
-
-
-
-
-
 void setup() {
 
   nh.initNode();
   nh.advertise(sensorData);
   nh.advertise(arduinoLog);
+  nh.advertise(currentData);
 
   nh.subscribe(subLeftBack);
   nh.subscribe(subLeftFront);
@@ -79,18 +75,13 @@ void setup() {
   
  SabertoothTXPinSerial.begin(9600);
  Sabertooth::autobaud(SabertoothTXPinSerial);
-
- 
- /*Serial.begin(9600); //serial rx0 and tx 0 to pi
-
-    /* Initialise the sensor */
-  if(!bno.begin())
+ while((!bno.begin()))
   {
     /* There was a problem detecting the BNO055 ... check your connections */
     
     nh.logerror("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
     
-    while(1);
+    delay(1000);
   }
   
   delay(1000);
@@ -99,59 +90,18 @@ void setup() {
 }
 
 void loop() {
-  if(Serial.available()){
-    command = Serial.readStringUntil(terminator);
-  }
-  switch (command.charAt(0)){
-   case 'k':
-    rightBack.stop();
-    rightFront.stop();
-    leftBack.stop();
-    leftFront.stop();
-    break;
-   case 'm': // command syntax m motorName power(-127 to 127)
-     //add motor control
-     command.remove(0);
-     command.remove(0);
-   
-     String motorName = String();
-      while(command.charAt(0)!= " "){
-        motorName+=command.charAt(0);
-        command.remove(0);
-      }
-      command.remove(0);
-      int power= command.toInt();
-     
-      if(motorName="rightBack"){
-          rightBack.motor(power);
-       }
-      if(motorName= "rightFront"){
-          rightFront.motor(power);
-      }
-      if(motorName= "leftBack"){
-          leftBack.motor(power);
-      }
-      if(motorName= "leftFront"){
-          leftFront.motor(power);
-      }
-     
-     break;
-   
-       
-      
-      
-    case 'i':
-      Serial.println("Current: "+ String(analogRead(A0),HEX)+' '+ String(analogRead(A1),HEX)+' '+ String(analogRead(A2),HEX)+' '
+    String msg=("Current: "+ String(analogRead(A0),HEX)+' '+ String(analogRead(A1),HEX)+' '+ String(analogRead(A2),HEX)+' '
       +String(analogRead(A3),HEX));
-  
-
-    }
+    str_msg.data = msg.c_str();
+      currentData.publish( &str_msg);
+      
+    
     publishSensorData();
     nh.spinOnce();
     delay(100);
 }
 
-
+// want to change to publish to diffrent topics
 void publishSensorData(){
 
 //send sensor data packet
@@ -201,7 +151,7 @@ void publishSensorData(){
 
 
 
-
+// want to change to publish to diffrent topics
 String printEvent(sensors_event_t* event) {
   
   String msg;
