@@ -30,34 +30,34 @@ ros::Publisher arduinoLog("arduinoLog",&str_msg);
 
 
 
-void moter_rb( const std_msgs::UInt16& cmd_msg){
+void motor_rb( const std_msgs::UInt16& cmd_msg){
   rightBack.motor(cmd_msg.data); //set servo angle, should be from -127 to 127  
    
   }
   
-ros::Subscriber<std_msgs::UInt16> sub("motor_right_back", motor_rb);
+ros::Subscriber<std_msgs::UInt16> subRightBack("motor_right_back", motor_rb);
 
 
-void moter_rf( const std_msgs::UInt16& cmd_msg){
+void motor_rf( const std_msgs::UInt16& cmd_msg){
   rightFront.motor(cmd_msg.data); //set servo angle, should be from -127 to 127  
    
   }
   
-ros::Subscriber<std_msgs::UInt16> sub("motor_right_front", motor_rf);
+ros::Subscriber<std_msgs::UInt16> subRightFront("motor_right_front", motor_rf);
 
-void moter_lb( const std_msgs::UInt16& cmd_msg){
+void motor_lb( const std_msgs::UInt16& cmd_msg){
   leftBack.motor(cmd_msg.data); //set servo angle, should be from -127 to 127  
    
   }
   
-ros::Subscriber<std_msgs::UInt16> sub("motor_left_back", motor_lb);
+ros::Subscriber<std_msgs::UInt16> subLeftBack("motor_left_back", motor_lb);
 
-void moter_lf( const std_msgs::UInt16& cmd_msg){
+void motor_lf( const std_msgs::UInt16& cmd_msg){
   leftFront.motor(cmd_msg.data); //set servo angle, should be from -127 to 127  
    
   }
   
-ros::Subscriber<std_msgs::UInt16> sub("motor_right_back", motor_rb);
+ros::Subscriber<std_msgs::UInt16> subLeftFront("motor_left_front", motor_lf);
 
 
 
@@ -71,6 +71,11 @@ void setup() {
   nh.initNode();
   nh.advertise(sensorData);
   nh.advertise(arduinoLog);
+
+  nh.subscribe(subLeftBack);
+  nh.subscribe(subLeftFront);
+  nh.subscribe(subRightBack);
+  nh.subscribe(subRightFront);
   
  SabertoothTXPinSerial.begin(9600);
  Sabertooth::autobaud(SabertoothTXPinSerial);
