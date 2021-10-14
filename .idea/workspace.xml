@@ -9,9 +9,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cad538f-e556-4f0a-a083-e2a420d8f7f2" name="Changes" comment=" motor config">
+    <list default="true" id="1db3d2a9-b8ec-4958-a4a8-293256070b46" name="Changes" comment="Merge remote-tracking branch 'origin/main' into main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arduino_ros_code/westinghouse_hardware_node/westinghouse_hardware_node.ino" beforeDir="false" afterPath="$PROJECT_DIR$/arduino_ros_code/westinghouse_hardware_node/westinghouse_hardware_node.ino" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,9 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1zQsHk1sMVQOtlYBeQL2aHTWId7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
