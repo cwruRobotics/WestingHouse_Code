@@ -10,7 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1db3d2a9-b8ec-4958-a4a8-293256070b46" name="Changes" comment="Merge remote-tracking branch 'origin/main' into main">
+      <change afterPath="$PROJECT_DIR$/arduino_ros_code/hardware_nodev2/hardware_nodev2.ino" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual_control/manual_control_node.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arduino_ros_code/westinghouse_hardware_node/westinghouse_hardware_node.ino" beforeDir="false" afterPath="$PROJECT_DIR$/arduino_ros_code/westinghouse_hardware_node/westinghouse_hardware_node.ino" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,14 +23,20 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="ROS_Versoin" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -74,13 +83,15 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1cad538f-e556-4f0a-a083-e2a420d8f7f2" name="Changes" comment="" />
+      <changelist id="1db3d2a9-b8ec-4958-a4a8-293256070b46" name="Changes" comment="Merge remote-tracking branch 'origin/main' into main" />
       <created>1634091561798</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1634091561798</updated>
       <workItem from="1634091564000" duration="2241000" />
       <workItem from="1634173326412" duration="2034000" />
+      <workItem from="1634220440707" duration="4905000" />
+      <workItem from="1634305427776" duration="2867000" />
     </task>
     <task id="LOCAL-00001" summary="start serialBridge.cpp">
       <created>1634093300484</created>
@@ -114,19 +125,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
