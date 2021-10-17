@@ -20,10 +20,9 @@
 SoftwareSerial SWSerial(NOT_A_PIN, 18); // RX on no pin (unused), TX on pin 11 (to S1).
 
 SoftwareSerial portROS(0, 1);
-Sabertooth rightBack(128);
-Sabertooth rightFront(129);
-Sabertooth leftBack(130);
-Sabertooth leftFront(131);
+Sabertooth back(128);
+Sabertooth front(129);
+
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
 
@@ -62,11 +61,12 @@ void cmdVelCallback(const geometry_msgs::Twist &twist)
 
   // this variable is given forth/back velocity in range of [-0.5 +0.5]
   const float linear = twist.linear.x;
+  
   // this variable is given left/right velocity in range of [-1 +1]
   const float spin = twist.angular.z;
 
 
-
+   
   // give movement to forth/back direction
   forward(int(66*linear));
 
@@ -74,6 +74,7 @@ void cmdVelCallback(const geometry_msgs::Twist &twist)
   // if given command is right means spin is negative
   if (spin<0)
   {
+    
     turn(int(-100*spin),10);
   }
   else if (spin>0)
@@ -140,18 +141,18 @@ void loop()
 // All own functions
 
 void rightSpeed(int speed) {
-  rightFront.motor(speed);
-   rightBack.motor(speed);
+  front.motor(2,speed);
+   back.motor(2,speed);
 
   }
 
 void leftSpeed(int speed) {
-  leftBack.motor(speed);
-   leftFront.motor(speed);
+  back.motor(1,speed);
+   front.motor(1,speed);
    }
 
 int turn(int dauer, int geschw) { // left hand drive duration speed
-
+  nh.logdebug("turn");
   leftSpeed(geschw); //left speed (speed)
   rightSpeed(-geschw);
   delay(dauer);
@@ -160,19 +161,21 @@ int turn(int dauer, int geschw) { // left hand drive duration speed
 
 
 int forward(int gas) { //forward
-   rightFront.motor(gas);
-   rightBack.motor(gas);
-   leftBack.motor(gas);
-   leftFront.motor(gas);
+   nh.logerror(String(gas).c_str());
+   front.motor(1,gas);
+   back.motor(1,gas);
+   back.motor(2,gas);
+   front.motor(2,gas);
 }
 
 
 
 void standgas() {
-   rightFront.motor(0);
-   rightBack.motor(0);
-   leftBack.motor(0);
-   leftFront.motor(0);
+  nh.logdebug("Stop");
+    front.motor(1,0);
+   back.motor(1,0);
+   back.motor(2,0);
+   front.motor(2,0);
 }
 
 
