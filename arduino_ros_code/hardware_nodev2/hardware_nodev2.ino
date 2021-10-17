@@ -1,7 +1,10 @@
+
+
 #include <ros.h>
 #include <geometry_msgs/Twist.h>
 #include <math.h>
 #include <std_msgs/String.h>
+
 #include <SoftwareSerial.h>
 
 
@@ -17,15 +20,17 @@
 
 
 
-SoftwareSerial SWSerial(NOT_A_PIN, 18); // RX on no pin (unused), TX on pin 11 (to S1).
+// SoftwareSerial SWSerial(17, 16); // RX on no pin (unused), TX on pin 11 (to S1).
 
 SoftwareSerial portROS(0, 1);
-Sabertooth back(128);
-Sabertooth front(129);
+
+Sabertooth back(128, Serial2);
+Sabertooth front(129,Serial2);
+//Sabertooth back, front;
+
+// Sabertooth back, front;
 
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
-
-
 
 
 const long CONTROL_TIMEOUT = 1000; //ms to wait  before killing motors
@@ -88,9 +93,14 @@ void cmdVelCallback(const geometry_msgs::Twist &twist)
 void setup() {
 
 
-
-  SWSerial.begin(9600);
+  Serial1.begin(9600);
+  Serial2.begin(9600);
+  Serial3.begin(9600);
   portROS.begin(57600);
+  
+  Serial1.write(69);
+  Serial2.write(69);
+  Serial3.write(69);
 
   nh.initNode();
   nh.subscribe(subscriber);
@@ -120,6 +130,10 @@ void loop()
 {
   nh.spinOnce();
 
+  Serial1.write(69);
+  Serial2.write(69);
+  Serial3.write(69);
+  
   if(millis() - lastData >= CONTROL_TIMEOUT)
   {
     lastData=millis();

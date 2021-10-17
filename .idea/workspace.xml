@@ -9,7 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1db3d2a9-b8ec-4958-a4a8-293256070b46" name="Changes" comment="clean up">
+    <list default="true" id="1db3d2a9-b8ec-4958-a4a8-293256070b46" name="Changes" comment="serial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/arduino_ros_code/hardware_nodev2/hardware_nodev2.ino" beforeDir="false" afterPath="$PROJECT_DIR$/arduino_ros_code/hardware_nodev2/hardware_nodev2.ino" afterDir="false" />
     </list>
@@ -31,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ROS_Versoin" />
+        <entry key="$PROJECT_DIR$" value="anolog_motor_ctl" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -126,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634326797990</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="serial">
+      <created>1634488023319</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1634488023319</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +186,7 @@
     <MESSAGE value=" motor config" />
     <MESSAGE value="hardware control that uses twist" />
     <MESSAGE value="clean up" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean up" />
+    <MESSAGE value="serial" />
+    <option name="LAST_COMMIT_MESSAGE" value="serial" />
   </component>
 </project>
