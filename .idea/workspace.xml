@@ -9,9 +9,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1db3d2a9-b8ec-4958-a4a8-293256070b46" name="Changes" comment="serial">
+    <list default="true" id="1db3d2a9-b8ec-4958-a4a8-293256070b46" name="Changes" comment="Ben made hardware_nodev3, now have manual control">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arduino_ros_code/hardware_nodev2/hardware_nodev2.ino" beforeDir="false" afterPath="$PROJECT_DIR$/arduino_ros_code/hardware_nodev2/hardware_nodev2.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arduino_ros_code/hardware_nodev3/hardware_nodev3.ino" beforeDir="false" afterPath="$PROJECT_DIR$/arduino_ros_code/hardware_nodev3/hardware_nodev3.ino" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634488023319</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ben made hardware_nodev3, now have manual control">
+      <created>1634511517161</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634511517161</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +194,7 @@
     <MESSAGE value="hardware control that uses twist" />
     <MESSAGE value="clean up" />
     <MESSAGE value="serial" />
-    <option name="LAST_COMMIT_MESSAGE" value="serial" />
+    <MESSAGE value="Ben made hardware_nodev3, now have manual control" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ben made hardware_nodev3, now have manual control" />
   </component>
 </project>

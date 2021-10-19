@@ -9,6 +9,9 @@
 
 #include <std_msgs/String.h>
 #include <geometry_msgs/Twist.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
 
 // function predefs
 void cmdVelCallback(const geometry_msgs::Twist&);
@@ -21,12 +24,14 @@ SoftwareSerial portROS(0, 1);
 Sabertooth back(128, Serial1);
 Sabertooth front(129, Serial1);
 
+
+
+
 // ros vars
 ros::NodeHandle nh;
 
 geometry_msgs::Twist msg;
 std_msgs::String str_msg;
-
 ros::Subscriber<geometry_msgs::Twist> vel_sub("cmd_vel", cmdVelCallback);
 
 ros::Publisher chatter_pub("cmd_vel", &msg);
@@ -48,13 +53,14 @@ void setup() {
 
   nh.initNode();
   nh.subscribe(vel_sub);
+  nh.loginfo("Setting up");
 
   nh.advertise(chatter_pub);
   nh.advertise(sensorData);
   nh.advertise(arduinoLog);
   nh.advertise(currentData);
 
-  move(10, 10);
+  move(0, 0);
 }
 
 void loop() {
@@ -64,13 +70,15 @@ void loop() {
   dt = millis() - last_time;
 
   if(dt > 100) {
-    move(10, 10);
+    move(0, 0);
   }
+  String msg=("Current: "+ String(analogRead(A0),HEX)+' '+ String(analogRead(A1),HEX)+' '+ String(analogRead(A2),HEX)+' '
+      +String(analogRead(A3),HEX));
+    str_msg.data = msg.c_str();
+      currentData.publish( &str_msg);
 
-//  Serial1.write(69);
-//  front.motor(1, 0);
-//  front.motor(2, 100);
-  // move(100, 100);
+
+
   Serial1.flush();
 
 
@@ -87,7 +95,7 @@ void cmdVelCallback(const geometry_msgs::Twist& twist) {
   const float spin = twist.angular.z;
 
   sprintf(buf, "Vals: %0.2f,%0.2f", linear, spin);
-  nh.logerror(buf);
+  nh.loginfo(buf);
 
   // TODO: Figure this out
   const int left = linear + spin;
@@ -99,7 +107,7 @@ void cmdVelCallback(const geometry_msgs::Twist& twist) {
 
 void move(int left, int right) {
   sprintf(buf, "Setting Motors -- Left: %3d, Right: %3d", left, right);
-  nh.logerror(buf);
+  nh.loginfo(buf);
   front.motor(1, left);
   back.motor(1, left);
 
